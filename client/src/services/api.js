@@ -1,9 +1,12 @@
 import axios from 'axios';
 
 const AUTH_STORAGE_KEY = 'ai-service-marketplace-auth';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+console.log('API URL:', API_BASE_URL);
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://api.example.com',
+  baseURL: API_BASE_URL,
   timeout: 12000,
   headers: {
     'Content-Type': 'application/json',

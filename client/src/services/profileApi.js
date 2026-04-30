@@ -1,12 +1,12 @@
 import api from './api';
 
 export const profileApi = {
-  getMe: () => api.get('/users/me'),
-  update: (payload) => api.put('/users/update', payload),
-  getUser: (id) => api.get(`/users/${id}`),
+  getMe: () => api.get('/api/users/me'),
+  update: (payload) => api.put('/api/users/update', payload),
+  getUser: (id) => api.get(`/api/users/${id}`),
 };
 
 export const reviewApi = {
-  create: (payload) => api.post('/reviews', payload),
-  getProviderReviews: (providerId) => api.get(`/reviews/${providerId}`),
+  create: (payload) => api.post('/api/reviews', payload),
+  getProviderReviews: (providerId) => api.get(`/api/reviews/${providerId}`),
 };

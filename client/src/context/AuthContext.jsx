@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
       setError('');
 
       try {
-        const { data } = await api.post('/auth/login', credentials);
+        const { data } = await api.post('/api/auth/login', credentials);
         const nextUser = normalizeUser(data.user);
 
         persistAuth({
@@ -81,7 +81,7 @@ export function AuthProvider({ children }) {
       setError('');
 
       try {
-        const { data } = await api.post('/auth/register', payload);
+        const { data } = await api.post('/api/auth/register', payload);
         return data;
       } catch (requestError) {
         const message = getErrorMessage(requestError);
@@ -98,7 +98,7 @@ export function AuthProvider({ children }) {
       setLoading(true);
 
       try {
-        const { data } = await api.get('/auth/me');
+        const { data } = await api.get('/api/auth/me');
         const nextUser = normalizeUser(data.user);
         persistAuth({ ...auth, user: nextUser });
         return nextUser;

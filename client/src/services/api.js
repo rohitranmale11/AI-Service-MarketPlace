@@ -1,11 +1,17 @@
 import axios from 'axios';
 
 const AUTH_STORAGE_KEY = 'ai-service-marketplace-auth';
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '')
+const DEFAULT_API_BASE_URL = 'https://ai-service-marketplace.onrender.com';
+const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || DEFAULT_API_BASE_URL;
+const API_BASE_URL = RAW_API_BASE_URL
   .replace(/\/+$/, '')
   .replace(/\/api$/, '');
 
-console.log('API URL:', API_BASE_URL);
+console.log('API BASE URL:', API_BASE_URL);
+
+if (!import.meta.env.VITE_API_URL) {
+  console.warn('VITE_API_URL is not set. Falling back to the deployed Render backend.');
+}
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -16,7 +22,9 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  console.log('API Request:', `${config.baseURL || ''}${config.url || ''}`);
+  const requestUrl = new URL(config.url || '', config.baseURL || API_BASE_URL).toString();
+
+  console.log('API Request:', requestUrl);
 
   try {
     const savedAuth = localStorage.getItem(AUTH_STORAGE_KEY);

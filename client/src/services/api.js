@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const AUTH_STORAGE_KEY = 'ai-service-marketplace-auth';
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '')
+  .replace(/\/+$/, '')
+  .replace(/\/api$/, '');
 
 console.log('API URL:', API_BASE_URL);
 
@@ -14,6 +16,8 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
+  console.log('API Request:', `${config.baseURL || ''}${config.url || ''}`);
+
   try {
     const savedAuth = localStorage.getItem(AUTH_STORAGE_KEY);
 

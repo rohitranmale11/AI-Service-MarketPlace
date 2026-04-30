@@ -81,7 +81,7 @@ export function AuthProvider({ children }) {
       setError('');
 
       try {
-        const { data } = await api.post('/api/auth/register', payload);
+        const { data } = await api.post('/api/auth/signup', payload);
         return data;
       } catch (requestError) {
         const message = getErrorMessage(requestError);

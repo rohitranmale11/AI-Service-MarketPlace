@@ -38,7 +38,7 @@ export default function SignupPage() {
         <div className="mb-8 flex justify-center">
           <Link to="/"><Logo /></Link>
         </div>
-        <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 sm:p-8">
+        <form onSubmit={handleSubmit} className="glass rounded-lg p-6 sm:p-8">
           <div className="text-center">
             <h1 className="font-display text-3xl font-bold text-slate-950">Create your account</h1>
             <p className="mt-2 text-sm text-slate-500">Start posting AI requests or applying as a specialist.</p>
@@ -75,7 +75,7 @@ export default function SignupPage() {
                       key={role.value}
                       type="button"
                       onClick={() => setValues((current) => ({ ...current, role: role.value }))}
-                      className={`rounded-2xl border p-4 text-left transition ${isSelected ? 'border-indigo-300 bg-indigo-50 text-indigo-700 ring-4 ring-indigo-100' : 'border-slate-200 bg-white/85 text-slate-600 hover:border-indigo-200 hover:bg-indigo-50'}`}
+                      className={`rounded-lg border p-4 text-left transition ${isSelected ? 'border-blue-300 bg-blue-50 text-blue-700 ring-4 ring-blue-100' : 'border-slate-200 bg-white/85 text-slate-600 hover:border-blue-200 hover:bg-blue-50'}`}
                     >
                       <Icon className="h-5 w-5" />
                       <span className="mt-3 block font-bold">{role.label}</span>
@@ -85,13 +85,13 @@ export default function SignupPage() {
                 })}
               </div>
             </div>
-            {error && <p className="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-600">{error}</p>}
+            {error && <p className="rounded-lg bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-600">{error}</p>}
           </div>
           <Button type="submit" disabled={loading} className="mt-7 w-full disabled:cursor-not-allowed disabled:opacity-70">
             {loading ? 'Creating account...' : 'Signup'} <ArrowRight className="h-4 w-4" />
           </Button>
           <p className="mt-6 text-center text-sm text-slate-500">
-            Already have an account? <Link to="/login" className="font-semibold text-indigo-600 hover:text-indigo-700">Login</Link>
+            Already have an account? <Link to="/login" className="font-semibold text-blue-600 hover:text-blue-700">Login</Link>
           </p>
         </form>
       </div>

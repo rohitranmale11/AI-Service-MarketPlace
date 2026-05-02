@@ -25,7 +25,7 @@ export function ToastProvider({ children }) {
       {children}
       <div className="fixed right-4 top-4 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3">
         {toasts.map((toast) => (
-          <div key={toast.id} className="glass flex items-center gap-3 rounded-2xl p-4 text-sm text-slate-700">
+          <div key={toast.id} className="glass flex items-center gap-3 rounded-lg p-4 text-sm text-slate-700">
             <CheckCircle2 className="h-5 w-5 flex-none text-emerald-500" />
             <span className="flex-1">{toast.message}</span>
             <button onClick={() => dismiss(toast.id)} className="rounded-full p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700" aria-label="Dismiss toast">

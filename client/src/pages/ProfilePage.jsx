@@ -90,12 +90,12 @@ export default function ProfilePage() {
 
   return (
     <DashboardLayout title="Profile" subtitle="Manage your marketplace identity, skills, and reputation.">
-      <div className="grid gap-6 xl:grid-cols-[360px_1fr]">
+      <div className="mx-auto grid max-w-5xl gap-6 xl:grid-cols-[360px_1fr]">
         <Card className="h-fit text-center hover:shadow-soft">
           {profile.profileImage ? (
-            <img src={profile.profileImage} alt={profile.name} className="mx-auto h-28 w-28 rounded-2xl object-cover shadow-glow" />
+            <img src={profile.profileImage} alt={profile.name} className="mx-auto h-32 w-32 rounded-full object-cover shadow-soft ring-4 ring-white" />
           ) : (
-            <div className="mx-auto grid h-28 w-28 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-600 text-3xl font-extrabold text-white shadow-glow">
+            <div className="mx-auto grid h-32 w-32 place-items-center rounded-full bg-primary text-3xl font-extrabold text-white shadow-soft ring-4 ring-white">
               {getAvatar(profile.name)}
             </div>
           )}
@@ -105,7 +105,7 @@ export default function ProfilePage() {
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
               <BadgeCheck className="h-3.5 w-3.5" /> Verified
             </span>
-            <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold capitalize text-indigo-700">{profile.role}</span>
+            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold capitalize text-blue-700">{profile.role}</span>
           </div>
           {profile.role === 'provider' && (
             <div className="mt-5">
@@ -123,7 +123,7 @@ export default function ProfilePage() {
             <div className="md:col-span-2">
               <label className="block">
                 <span className="mb-2 block text-sm font-semibold text-slate-700">Profile image</span>
-                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-dashed border-indigo-200 bg-indigo-50/60 px-4 py-5 text-sm font-bold text-indigo-700 transition hover:bg-indigo-50">
+                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-blue-200 bg-blue-50/60 px-4 py-5 text-sm font-bold text-blue-700 transition hover:bg-blue-50">
                   <ImagePlus className="h-4 w-4" />
                   Upload image
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
@@ -145,14 +145,14 @@ export default function ProfilePage() {
                       addSkill();
                     }
                   }}
-                  className="min-w-0 flex-1 rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                   placeholder="Add skill"
                 />
                 <Button onClick={addSkill} variant="secondary" className="px-4">Add</Button>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {(profile.skills || []).map((skill) => (
-                  <span key={skill} className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-xs font-bold text-indigo-700">
+                  <span key={skill} className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700">
                     {skill}
                     <button type="button" onClick={() => removeSkill(skill)} aria-label={`Remove ${skill}`}>
                       <X className="h-3.5 w-3.5" />

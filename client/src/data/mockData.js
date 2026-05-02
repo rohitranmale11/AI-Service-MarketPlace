@@ -9,9 +9,9 @@ export const user = {
 };
 
 export const stats = [
-  { label: 'Total Requests', value: '128', trend: '+18%', tone: 'from-indigo-500 to-blue-500' },
-  { label: 'Applications Sent', value: '47', trend: '+9%', tone: 'from-violet-500 to-fuchsia-500' },
-  { label: 'Active Requests', value: '16', trend: '+5%', tone: 'from-cyan-500 to-indigo-500' },
+  { label: 'Total Requests', value: '128', trend: '+18%', tone: 'from-blue-500 to-blue-500' },
+  { label: 'Applications Sent', value: '47', trend: '+9%', tone: 'from-emerald-500 to-green-500' },
+  { label: 'Active Requests', value: '16', trend: '+5%', tone: 'from-cyan-500 to-blue-500' },
 ];
 
 export const requests = [

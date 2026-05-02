@@ -73,7 +73,7 @@ export default function ApplicationsPage() {
           <EmptyState title="No applications yet" description={isProvider ? 'Apply to open requests and track them here.' : 'Provider applications for your requests will appear here.'} actionLabel={isProvider ? 'Browse Requests' : 'Create Request'} actionTo={isProvider ? '/requests' : '/create'} />
         ) : (
           <>
-        <div className="hidden overflow-hidden rounded-2xl border border-slate-100 bg-white/85 md:block">
+        <div className="hidden overflow-hidden rounded-lg border border-slate-100 bg-white/85 md:block">
           <div className="grid grid-cols-[1.4fr_0.8fr_0.7fr_0.7fr_0.8fr] bg-slate-50 px-5 py-4 text-xs font-bold uppercase text-slate-400">
             <span>Request</span>
             <span>{isProvider ? 'Client' : 'Provider'}</span>
@@ -87,7 +87,7 @@ export default function ApplicationsPage() {
                 <span className="font-semibold text-slate-950">{application.requestId?.title}</span>
                 <span className="text-slate-500">
                   {isProvider ? application.requestId?.createdBy?.name : (
-                    <Link to={`/providers/${application.providerId?._id}`} className="font-semibold text-indigo-600 hover:text-indigo-700">
+                    <Link to={`/providers/${application.providerId?._id}`} className="font-semibold text-blue-600 hover:text-blue-700">
                       {application.providerId?.name}
                     </Link>
                   )}
@@ -132,13 +132,13 @@ export default function ApplicationsPage() {
         <div className="space-y-4 md:hidden">
           {applications.map((application) => {
             return (
-              <div key={application._id} className="rounded-2xl bg-white/85 p-4 shadow-soft">
+              <div key={application._id} className="rounded-lg bg-white/85 p-4 shadow-soft">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="font-semibold text-slate-950">{application.requestId?.title}</p>
                     <p className="mt-1 text-sm text-slate-500">
                       {isProvider ? application.requestId?.createdBy?.name : (
-                        <Link to={`/providers/${application.providerId?._id}`} className="font-semibold text-indigo-600 hover:text-indigo-700">
+                        <Link to={`/providers/${application.providerId?._id}`} className="font-semibold text-blue-600 hover:text-blue-700">
                           {application.providerId?.name}
                         </Link>
                       )}

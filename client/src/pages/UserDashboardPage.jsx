@@ -104,7 +104,7 @@ export default function UserDashboardPage() {
 
   return (
     <DashboardLayout title="User Dashboard" subtitle="Create AI service requests and track provider interest.">
-      <div className="mb-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 p-6 text-white shadow-glow">
+      <div className="mb-6 rounded-lg bg-gradient-to-r from-primary to-accent p-6 text-white shadow-soft">
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-sm font-semibold ring-1 ring-white/20">
@@ -112,19 +112,19 @@ export default function UserDashboardPage() {
               Welcome, {user?.name || 'User'}
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold">Turn your next AI idea into a clear request.</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-indigo-50">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50">
               Post scoped work, compare providers, and manage your marketplace activity from one focused workspace.
             </p>
           </div>
-          <Button to="/create" variant="secondary" className="bg-white text-indigo-700">
+          <Button to="/create" variant="secondary" className="bg-white text-blue-700">
             <Plus className="h-4 w-4" /> Create Request
           </Button>
         </div>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <StatCard label="Total Requests" value={postedRequests.length} trend="+2" tone="from-indigo-500 to-blue-500" />
-        <StatCard label="Active Requests" value="3" trend="Live" tone="from-cyan-500 to-indigo-500" />
+        <StatCard label="Total Requests" value={postedRequests.length} trend="+2" tone="from-blue-500 to-blue-500" />
+        <StatCard label="Active Requests" value="3" trend="Live" tone="from-cyan-500 to-blue-500" />
       </div>
 
       <Card className="mt-6 hover:shadow-soft">
@@ -162,9 +162,9 @@ export default function UserDashboardPage() {
             const applications = applicationsByRequest[request._id] || [];
 
             return (
-            <div key={request._id} className="rounded-2xl border border-slate-100 bg-white/85 p-5 shadow-soft">
+            <div key={request._id} className="rounded-lg border border-slate-100 bg-white/85 p-5 shadow-soft">
               <div className="flex items-start justify-between gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-indigo-50 text-indigo-600">
+                <div className="grid h-11 w-11 place-items-center rounded-lg bg-blue-50 text-blue-600">
                   <ClipboardList className="h-5 w-5" />
                 </div>
                 <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">Active</span>
@@ -177,9 +177,9 @@ export default function UserDashboardPage() {
                   <Trash2 className="h-4 w-4" /> Delete
                 </Button>
               </div>
-              <div className="mt-5 rounded-2xl bg-slate-50 p-4">
+              <div className="mt-5 rounded-lg bg-slate-50 p-4">
                 <p className="flex items-center gap-2 text-sm font-bold text-slate-950">
-                  <UsersRound className="h-4 w-4 text-indigo-500" />
+                  <UsersRound className="h-4 w-4 text-blue-500" />
                   Applications ({applications.length})
                 </p>
                 <div className="mt-3 space-y-3">
@@ -189,7 +189,7 @@ export default function UserDashboardPage() {
                     <div key={application._id} className="rounded-xl bg-white p-3 text-sm">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <Link to={`/providers/${application.providerId?._id}`} className="font-bold text-indigo-600 hover:text-indigo-700">{application.providerId?.name}</Link>
+                          <Link to={`/providers/${application.providerId?._id}`} className="font-bold text-blue-600 hover:text-blue-700">{application.providerId?.name}</Link>
                           <p className="text-slate-500">{application.providerId?.email}</p>
                         </div>
                         <StatusBadge status={application.status} />

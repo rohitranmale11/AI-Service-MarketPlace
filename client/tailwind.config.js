@@ -10,13 +10,16 @@ export default {
       colors: {
         ink: '#111827',
         mist: '#F8FAFC',
+        primary: '#2563EB',
+        secondary: '#0F172A',
+        accent: '#22C55E',
       },
       boxShadow: {
-        glow: '0 24px 80px rgba(79, 70, 229, 0.18)',
-        soft: '0 20px 45px rgba(15, 23, 42, 0.08)',
+        glow: '0 18px 45px rgba(37, 99, 235, 0.18)',
+        soft: '0 12px 28px rgba(15, 23, 42, 0.08)',
       },
       backgroundImage: {
-        mesh: 'radial-gradient(circle at top left, rgba(99,102,241,0.18), transparent 34%), radial-gradient(circle at 85% 15%, rgba(168,85,247,0.14), transparent 28%), linear-gradient(180deg, #ffffff 0%, #f8fafc 60%, #eef2ff 100%)',
+        mesh: 'linear-gradient(180deg, #ffffff 0%, #F8FAFC 48%, #EFF6FF 100%)',
       },
     },
   },

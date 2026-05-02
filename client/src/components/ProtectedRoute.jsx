@@ -9,7 +9,7 @@ export default function ProtectedRoute({ allowedRoles, children }) {
   if (loading) {
     return (
       <main className="grid min-h-screen place-items-center bg-mesh px-4">
-        <div className="glass rounded-2xl p-6 text-sm font-semibold text-indigo-600">Checking authentication...</div>
+        <div className="glass rounded-lg p-6 text-sm font-semibold text-blue-600">Checking authentication...</div>
       </main>
     );
   }

@@ -135,14 +135,14 @@ export default function ChatPage() {
 
   return (
     <DashboardLayout title="Chat" subtitle="Message clients and providers in real time after an application.">
-      <div className="grid min-h-[680px] gap-6 xl:grid-cols-[340px_1fr]">
+      <div className="grid gap-4 xl:min-h-[680px] xl:grid-cols-[340px_1fr] xl:gap-6">
         <Card className="h-fit xl:sticky xl:top-24">
           <div className="mb-5 flex items-center justify-between gap-3">
             <div>
               <h2 className="font-display text-xl font-bold text-slate-950">Conversations</h2>
               <p className="mt-1 text-sm text-slate-500">Chats linked to requests.</p>
             </div>
-            <MessageCircle className="h-5 w-5 text-indigo-500" />
+            <MessageCircle className="h-5 w-5 text-blue-500" />
           </div>
 
           {loading ? (
@@ -156,7 +156,7 @@ export default function ChatPage() {
                   key={chat._id}
                   type="button"
                   onClick={() => selectChat(chat)}
-                  className={`w-full rounded-2xl border p-4 text-left transition ${activeChat?._id === chat._id ? 'border-indigo-200 bg-indigo-50' : 'border-slate-100 bg-white/85 hover:bg-indigo-50'}`}
+                  className={`w-full rounded-lg border p-4 text-left transition ${activeChat?._id === chat._id ? 'border-blue-200 bg-blue-50' : 'border-slate-100 bg-white hover:bg-blue-50'}`}
                 >
                   <p className="font-bold text-slate-950">{chat.requestId?.title || 'Request chat'}</p>
                   <p className="mt-1 text-sm text-slate-500">{chat.providerId?.name || 'Provider conversation'}</p>
@@ -166,19 +166,19 @@ export default function ChatPage() {
           )}
         </Card>
 
-        <Card className="flex min-h-[680px] flex-col hover:shadow-soft">
+        <Card className="flex min-h-[calc(100vh-11rem)] flex-col overflow-hidden p-0 hover:shadow-soft xl:min-h-[680px]">
           {!activeChat ? (
-            <div className="grid flex-1 place-items-center">
+            <div className="grid flex-1 place-items-center p-6">
               <EmptyState title="Select a conversation" description="Choose a request chat to start messaging." />
             </div>
           ) : (
             <>
-              <div className="border-b border-slate-100 pb-5">
+              <div className="border-b border-slate-100 bg-white px-4 py-4 sm:px-6">
                 <p className="font-display text-xl font-bold text-slate-950">{activeChat.requestId?.title}</p>
                 <p className="mt-1 text-sm text-slate-500">Chatting with {otherPerson?.name || activeChat.providerId?.name || 'participant'}</p>
               </div>
 
-              <div className="flex-1 space-y-4 overflow-auto py-5">
+              <div className="flex-1 space-y-4 overflow-auto bg-slate-50/70 px-4 py-5 sm:px-6">
                 {messages.length === 0 ? (
                   <EmptyState title="No messages yet" description="Send the first message to begin the conversation." />
                 ) : messages.map((message) => {
@@ -187,9 +187,9 @@ export default function ChatPage() {
 
                   return (
                     <div key={message._id || `${senderId}-${message.createdAt}`} className={`flex ${isMine ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[78%] rounded-2xl px-4 py-3 shadow-soft ${isMine ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white' : 'bg-white text-slate-700'}`}>
+                      <div className={`max-w-[86%] rounded-lg px-4 py-3 shadow-soft sm:max-w-[72%] ${isMine ? 'bg-primary text-white' : 'bg-white text-slate-700'}`}>
                         <p className="text-sm leading-6">{message.text}</p>
-                        <p className={`mt-2 text-[11px] ${isMine ? 'text-indigo-100' : 'text-slate-400'}`}>{formatTime(message.createdAt)}</p>
+                        <p className={`mt-2 text-[11px] ${isMine ? 'text-blue-100' : 'text-slate-400'}`}>{formatTime(message.createdAt)}</p>
                       </div>
                     </div>
                   );
@@ -197,15 +197,15 @@ export default function ChatPage() {
                 <div ref={messagesEndRef} />
               </div>
 
-              <form onSubmit={sendMessage} className="flex gap-3 border-t border-slate-100 pt-5">
+              <form onSubmit={sendMessage} className="flex gap-3 border-t border-slate-100 bg-white p-4 sm:p-5">
                 <input
                   value={messageText}
                   onChange={(event) => setMessageText(event.target.value)}
-                  className="min-w-0 flex-1 rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-blue-100"
                   placeholder="Type your message..."
                 />
-                <Button type="submit" disabled={sending || !messageText.trim()} className="px-4 disabled:cursor-not-allowed disabled:opacity-60">
-                  <Send className="h-4 w-4" /> Send
+                <Button type="submit" disabled={sending || !messageText.trim()} className="px-4 disabled:cursor-not-allowed disabled:opacity-60" aria-label="Send message">
+                  <Send className="h-4 w-4" /> <span className="hidden sm:inline">Send</span>
                 </Button>
               </form>
             </>

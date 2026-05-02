@@ -66,14 +66,14 @@ export default function CreateRequestPage() {
                       addSkill();
                     }
                   }}
-                  className="min-w-0 flex-1 rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                   placeholder="Add skill"
                 />
                 <Button onClick={addSkill} variant="secondary" className="sm:w-auto"><Plus className="h-4 w-4" /> Add</Button>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <span key={skill} className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-700">
+                  <span key={skill} className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700">
                     {skill}
                     <button type="button" onClick={() => removeSkill(skill)} aria-label={`Remove ${skill}`}>
                       <X className="h-3.5 w-3.5" />
@@ -90,10 +90,10 @@ export default function CreateRequestPage() {
 
         <Card className="h-fit hover:shadow-soft">
           <p className="font-display text-xl font-bold text-slate-950">Request preview</p>
-          <div className="mt-5 rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-600 p-5 text-white">
-            <p className="text-sm font-semibold text-indigo-100">{values.budget ? `$${values.budget}` : '$2,500'}</p>
+          <div className="mt-5 rounded-lg bg-gradient-to-br from-primary to-accent p-5 text-white">
+            <p className="text-sm font-semibold text-blue-100">{values.budget ? `$${values.budget}` : '$2,500'}</p>
             <h2 className="mt-3 font-display text-2xl font-bold">{values.title || 'AI service request'}</h2>
-            <p className="mt-4 text-sm leading-6 text-indigo-50">{values.description || 'Your polished request summary will appear here as you type.'}</p>
+            <p className="mt-4 text-sm leading-6 text-blue-50">{values.description || 'Your polished request summary will appear here as you type.'}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span key={skill} className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/20">{skill}</span>

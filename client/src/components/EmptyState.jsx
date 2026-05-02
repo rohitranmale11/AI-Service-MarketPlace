@@ -3,8 +3,8 @@ import Button from './Button';
 
 export default function EmptyState({ title, description, actionLabel, actionTo }) {
   return (
-    <div className="glass grid place-items-center rounded-2xl px-6 py-14 text-center">
-      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-indigo-50 text-indigo-600">
+    <div className="glass grid place-items-center rounded-lg px-6 py-14 text-center">
+      <div className="grid h-14 w-14 place-items-center rounded-lg bg-blue-50 text-blue-600">
         <Inbox className="h-7 w-7" />
       </div>
       <h3 className="mt-5 font-display text-xl font-bold text-slate-950">{title}</h3>

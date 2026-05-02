@@ -27,7 +27,7 @@ export default function NotificationBell() {
       <button
         type="button"
         onClick={() => setOpen((current) => !current)}
-        className="relative grid h-11 w-11 place-items-center rounded-2xl bg-white text-slate-600 shadow-soft transition hover:bg-indigo-50 hover:text-indigo-700"
+        className="relative grid h-11 w-11 place-items-center rounded-lg bg-white text-slate-600 shadow-soft transition hover:bg-blue-50 hover:text-blue-700"
         aria-label="Notifications"
       >
         <Bell className="h-5 w-5" />
@@ -39,10 +39,10 @@ export default function NotificationBell() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-14 z-50 w-80 overflow-hidden rounded-2xl border border-white/70 bg-white/95 shadow-glow backdrop-blur-xl">
+        <div className="absolute right-0 top-14 z-50 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-lg border border-slate-200 bg-white/95 shadow-soft backdrop-blur-xl">
           <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
             <p className="font-display text-sm font-bold text-slate-950">Notifications</p>
-            <Link to="/notifications" onClick={() => setOpen(false)} className="text-xs font-bold text-indigo-600">View all</Link>
+            <Link to="/notifications" onClick={() => setOpen(false)} className="text-xs font-bold text-blue-600">View all</Link>
           </div>
           {loading ? (
             <p className="p-4 text-sm text-slate-500">Loading notifications...</p>
@@ -55,7 +55,7 @@ export default function NotificationBell() {
                   key={notification._id}
                   type="button"
                   onClick={() => handleNotificationClick(notification)}
-                  className={`block w-full border-b border-slate-100 px-4 py-3 text-left transition last:border-b-0 hover:bg-indigo-50 ${notification.isRead ? 'bg-white text-slate-500' : 'bg-indigo-50/60 text-slate-950'}`}
+                  className={`block w-full border-b border-slate-100 px-4 py-3 text-left transition last:border-b-0 hover:bg-blue-50 ${notification.isRead ? 'bg-white text-slate-500' : 'bg-blue-50/60 text-slate-950'}`}
                 >
                   <p className={`text-sm ${notification.isRead ? 'font-medium' : 'font-bold'}`}>{notification.message}</p>
                   <p className="mt-1 text-xs text-slate-400">{formatTime(notification.createdAt)}</p>

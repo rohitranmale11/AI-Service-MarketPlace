@@ -106,17 +106,17 @@ export default function ProviderDashboardPage() {
   return (
     <DashboardLayout title="Provider Dashboard" subtitle="Find matched AI work and track your active applications.">
       <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-        <Card className="bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-900 text-white hover:shadow-glow">
-          <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-indigo-100 ring-1 ring-white/15">
+        <Card className="bg-gradient-to-br from-secondary to-blue-900 text-white hover:shadow-soft">
+          <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-blue-100 ring-1 ring-white/15">
             <BadgeCheck className="h-4 w-4" />
             Provider workspace
           </p>
           <h2 className="mt-5 font-display text-3xl font-bold">Welcome back, {user?.name || 'Provider'}.</h2>
-          <p className="mt-3 text-sm leading-6 text-indigo-100">
+          <p className="mt-3 text-sm leading-6 text-blue-100">
             Browse premium AI requests, send sharper proposals, and keep your application pipeline moving.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Button to="/requests" variant="secondary" className="bg-white text-indigo-700">
+            <Button to="/requests" variant="secondary" className="bg-white text-blue-700">
               <BriefcaseBusiness className="h-4 w-4" /> Browse Requests
             </Button>
             <Button to="/applications" variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
@@ -126,7 +126,7 @@ export default function ProviderDashboardPage() {
         </Card>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <StatCard label="Applications Sent" value={applications.length} trend="Live" tone="from-violet-500 to-fuchsia-500" />
+          <StatCard label="Applications Sent" value={applications.length} trend="Live" tone="from-emerald-500 to-green-500" />
           <StatCard label="Accepted" value={acceptedApplications.length} trend="High fit" tone="from-emerald-500 to-cyan-500" />
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function ProviderDashboardPage() {
               <h2 className="font-display text-xl font-bold text-slate-950">Find requests</h2>
               <p className="mt-1 text-sm text-slate-500">Search by scope, budget, and skills.</p>
             </div>
-            <Filter className="h-5 w-5 text-indigo-500" />
+            <Filter className="h-5 w-5 text-blue-500" />
           </div>
 
           <div className="space-y-5">
@@ -149,7 +149,7 @@ export default function ProviderDashboardPage() {
                 <input
                   value={filters.keyword}
                   onChange={(event) => updateFilter('keyword', event.target.value)}
-                  className="w-full rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 pl-11 text-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
+                  className="w-full rounded-lg border border-slate-200 bg-white/85 px-4 py-3 pl-11 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                   placeholder="Search React, chatbot, RAG..."
                 />
               </div>
@@ -172,14 +172,14 @@ export default function ProviderDashboardPage() {
                       addSkill();
                     }
                   }}
-                  className="min-w-0 flex-1 rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white/85 px-4 py-3 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                   placeholder="Add skill"
                 />
                 <Button onClick={addSkill} variant="secondary" className="px-4">Add</Button>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {selectedSkills.map((skill) => (
-                  <span key={skill} className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-xs font-bold text-indigo-700">
+                  <span key={skill} className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700">
                     {skill}
                     <button type="button" onClick={() => removeSkill(skill)} aria-label={`Remove ${skill}`}>
                       <X className="h-3.5 w-3.5" />
@@ -201,7 +201,7 @@ export default function ProviderDashboardPage() {
               <h2 className="font-display text-xl font-bold text-slate-950">Recommended requests</h2>
               <p className="mt-1 text-sm text-slate-500">{hasActiveFilters ? `${requests.length} filtered result${requests.length === 1 ? '' : 's'}` : 'Matched to your AI automation and copilot skills.'}</p>
             </div>
-            <Target className="h-5 w-5 text-indigo-500" />
+            <Target className="h-5 w-5 text-blue-500" />
           </div>
           <div className="space-y-4">
             {loading ? (
@@ -209,13 +209,13 @@ export default function ProviderDashboardPage() {
             ) : requests.length === 0 ? (
               <EmptyState title="No results found" description={hasActiveFilters ? 'Try adjusting your keyword, budget range, or skill tags.' : 'New service requests will appear here when users create them.'} />
             ) : requests.map((request) => (
-              <div key={request._id} className="rounded-2xl border border-slate-100 bg-white/85 p-5">
+              <div key={request._id} className="rounded-lg border border-slate-100 bg-white/85 p-5">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="font-display text-lg font-bold text-slate-950">{request.title}</h3>
                     <p className="mt-2 text-sm leading-6 text-slate-500">{request.description}</p>
                   </div>
-                  <p className="shrink-0 rounded-full bg-indigo-50 px-3 py-1 text-sm font-extrabold text-indigo-700">${request.budget}</p>
+                  <p className="shrink-0 rounded-full bg-blue-50 px-3 py-1 text-sm font-extrabold text-blue-700">${request.budget}</p>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {(request.skills || []).map((tag) => (
@@ -242,7 +242,7 @@ export default function ProviderDashboardPage() {
             ) : applications.length === 0 ? (
               <EmptyState title="No applications yet" description="Apply to a request and it will appear here." actionLabel="Browse Requests" actionTo="/requests" />
             ) : applications.map((application) => (
-              <div key={application._id} className="rounded-2xl bg-white/85 p-4 shadow-soft">
+              <div key={application._id} className="rounded-lg bg-white/85 p-4 shadow-soft">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="font-semibold text-slate-950">{application.requestId?.title}</p>

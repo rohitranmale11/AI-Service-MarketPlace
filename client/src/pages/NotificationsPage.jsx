@@ -32,18 +32,18 @@ export default function NotificationsPage() {
         ) : notifications.length === 0 ? (
           <EmptyState title="No notifications" description="Important marketplace updates will appear here." />
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white/85">
+          <div className="overflow-hidden rounded-lg border border-slate-100 bg-white/85">
             {notifications.map((notification) => (
               <button
                 key={notification._id}
                 type="button"
                 onClick={() => !notification.isRead && markAsRead(notification._id)}
-                className={`block w-full border-b border-slate-100 p-5 text-left transition last:border-b-0 hover:bg-indigo-50 ${notification.isRead ? 'bg-white/70' : 'bg-indigo-50/70'}`}
+                className={`block w-full border-b border-slate-100 p-5 text-left transition last:border-b-0 hover:bg-blue-50 ${notification.isRead ? 'bg-white/70' : 'bg-blue-50/70'}`}
               >
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <p className={`text-sm ${notification.isRead ? 'font-medium text-slate-600' : 'font-bold text-slate-950'}`}>{notification.message}</p>
-                    <p className="mt-2 text-xs font-semibold uppercase text-indigo-500">{notification.type}</p>
+                    <p className="mt-2 text-xs font-semibold uppercase text-blue-500">{notification.type}</p>
                   </div>
                   <p className="text-xs text-slate-400">{formatTime(notification.createdAt)}</p>
                 </div>

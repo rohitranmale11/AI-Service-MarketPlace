@@ -71,12 +71,12 @@ export default function ProviderProfilePage() {
 
   return (
     <DashboardLayout title="Provider Profile" subtitle="Ratings, skills, bio, and provider reviews.">
-      <div className="grid gap-6 xl:grid-cols-[360px_1fr]">
+      <div className="mx-auto grid max-w-5xl gap-6 xl:grid-cols-[360px_1fr]">
         <Card className="h-fit text-center hover:shadow-soft">
           {provider.profileImage ? (
-            <img src={provider.profileImage} alt={provider.name} className="mx-auto h-28 w-28 rounded-2xl object-cover shadow-glow" />
+            <img src={provider.profileImage} alt={provider.name} className="mx-auto h-32 w-32 rounded-full object-cover shadow-soft ring-4 ring-white" />
           ) : (
-            <div className="mx-auto grid h-28 w-28 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-600 text-3xl font-extrabold text-white shadow-glow">
+            <div className="mx-auto grid h-32 w-32 place-items-center rounded-full bg-primary text-3xl font-extrabold text-white shadow-soft ring-4 ring-white">
               {provider.name?.slice(0, 2).toUpperCase()}
             </div>
           )}
@@ -94,7 +94,7 @@ export default function ProviderProfilePage() {
           <p className="mt-6 text-sm leading-6 text-slate-500">{provider.bio || 'No bio added yet.'}</p>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {(provider.skills || []).map((skill) => (
-              <span key={skill} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-700">{skill}</span>
+              <span key={skill} className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">{skill}</span>
             ))}
           </div>
         </Card>
@@ -120,7 +120,7 @@ export default function ProviderProfilePage() {
             ) : (
               <div className="mt-5 space-y-4">
                 {reviews.map((review) => (
-                  <div key={review._id} className="rounded-2xl bg-white/85 p-4 shadow-soft">
+                  <div key={review._id} className="rounded-lg bg-white/85 p-4 shadow-soft">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="font-bold text-slate-950">{review.userId?.name}</p>
